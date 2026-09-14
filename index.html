@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple PDF Editor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="toolbar">
+    <label class="btn">
+      Open PDF
+      <input id="pdfInput" type="file" accept="application/pdf" hidden />
+    </label>
+
+    <button id="textBtn" disabled>Text</button>
+
+    <div id="textTools" class="text-tools hidden">
+      <select id="fontFamily" title="Font">
+        <option value="Helvetica">Helvetica</option>
+        <option value="TimesRoman">Times</option>
+        <option value="Courier">Courier</option>
+      </select>
+
+      <input id="fontSize" type="number" min="8" max="72" value="18" title="Font size" />
+
+      <label class="color-wrap" title="Font color">
+        <input id="fontColor" type="color" value="#000000" />
+      </label>
+
+      <button id="boldBtn" type="button" title="Bold"><b>B</b></button>
+    </div>
+
+    <button id="signBtn" disabled>Sign</button>
+    <button id="deleteBtn" disabled>Delete</button>
+
+    <span class="spacer"></span>
+
+    <button id="printBtn" disabled>Print</button>
+    <button id="downloadBtn" class="primary" disabled>Download PDF</button>
+  </header>
+
+  <main id="viewer">
+    <div id="emptyState">
+      <h2>Simple PDF Editor</h2>
+      <p>Open a PDF to start.</p>
+    </div>
+  </main>
+
+  <div id="signatureModal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Draw Signature</h3>
+      <canvas id="signatureCanvas"></canvas>
+      <div class="modal-actions">
+        <button id="clearSignature">Clear</button>
+        <button id="cancelSignature">Cancel</button>
+        <button id="useSignature" class="primary">Use Signature</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
