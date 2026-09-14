@@ -1,4 +1,4 @@
-const CACHE_NAME = "simplepdfedit-v1";
+const CACHE_NAME = "simplepdfedit-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -31,18 +31,14 @@ self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
 
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-
-      return fetch(event.request)
-        .then(response => {
-          if (!response || response.status !== 200) return response;
-
+    fetch(event.request)
+      .then(response => {
+        if (response && response.status === 200) {
           const copy = response.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-          return response;
-        })
-        .catch(() => caches.match("./index.html"));
-    })
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request).then(cached => cached || caches.match("./index.html")))
   );
 });
