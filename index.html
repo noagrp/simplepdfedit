@@ -29,17 +29,15 @@
         <option value="TimesRoman">Times</option>
         <option value="Courier">Courier</option>
       </select>
-
       <input id="fontSize" type="number" min="8" max="72" value="18" title="Font size" />
-
       <label class="color-wrap" title="Font color">
         <input id="fontColor" type="color" value="#000000" />
       </label>
-
       <button id="boldBtn" type="button" title="Bold"><b>B</b></button>
     </div>
 
     <button id="signBtn" disabled>Sign</button>
+    <button id="whiteoutBtn" disabled title="Drag over PDF content to cover it">Whiteout</button>
     <button id="deleteBtn" disabled>Delete</button>
 
     <span class="spacer"></span>
@@ -70,9 +68,7 @@
   <script type="module" src="app.js"></script>
   <script>
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js");
-      });
+      window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
     }
   </script>
 </body>
