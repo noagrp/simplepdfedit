@@ -73,6 +73,7 @@ button.primary {
 .overlay {
   position: absolute;
   inset: 0;
+  touch-action: none;
 }
 
 .item {
@@ -92,6 +93,8 @@ button.primary {
   padding: 2px 4px;
   min-width: 40px;
   background: rgba(255,255,255,.45);
+  white-space: pre-wrap;
+  line-height: 1.15;
 }
 
 .signature-item img {
@@ -99,6 +102,23 @@ button.primary {
   height: 100%;
   object-fit: contain;
   pointer-events: none;
+}
+
+.whiteout-item {
+  background: #fff;
+}
+
+.whiteout-item.selected {
+  outline: 1px dashed #2563eb;
+}
+
+.whiteout-draft {
+  position: absolute;
+  background: rgba(255,255,255,.8);
+  outline: 1px dashed #2563eb;
+  pointer-events: none;
+  min-width: 1px;
+  min-height: 1px;
 }
 
 .resize-handle {
@@ -214,14 +234,10 @@ button.primary {
 }
 
 #boldBtn.active,
-#textBtn.active {
+#textBtn.active,
+#whiteoutBtn.active {
   background: #2563eb;
   border-color: #2563eb;
-}
-
-.text-item {
-  white-space: pre-wrap;
-  line-height: 1.15;
 }
 
 @media (max-width: 760px) {
